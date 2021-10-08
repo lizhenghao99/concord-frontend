@@ -88,7 +88,7 @@ const LoginFormik = (props) => {
                                                     {form.errors.password}
                                                 </FormErrorMessage>
                                             </Flex>
-                                            <PasswordField {...field} id={'username'} placeholder={'Your username'}/>
+                                            <PasswordField {...field} id={'password'} placeholder={'Your password'}/>
                                             <Box minH={'0.25rem'}/>
                                             <Box
                                                 as="a"
