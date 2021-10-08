@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Spacer, Spinner, useColorModeValue } from '@chakra-ui/react';
 import { LoginComponent } from '../../components/auth/login/LoginComponent';
+import LoadingPage from '../../components/layouts/LoadingPage';
 import { useUser } from '../../lib/hooks';
 
 const Login = (props) => {
@@ -21,22 +22,9 @@ const Login = (props) => {
         </Flex>
     );
 
-    const loadingPage = (
-        <Flex
-            bg={useColorModeValue('gray.50', 'inherit')}
-            minH="100vh"
-            direction={'column'}
-            alignItems={'center'}
-        >
-            <Spacer/>
-            <Spinner size={'xl'}/>
-            <Spacer/>
-        </Flex>
-    );
-
     return (
         <>
-            {isLoading && loadingPage}
+            {isLoading && <LoadingPage/>}
             {user && alreadyLoggedInPage}
             {isError && <LoginComponent/>}
         </>
