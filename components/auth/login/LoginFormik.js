@@ -112,7 +112,7 @@ const LoginFormik = (props) => {
                                     Sign in
                                 </Button>
                                 {!props.isSubmitting && isLoginError &&
-                                <Text>
+                                <Text color={'red.500'}>
                                     Invalid credentials
                                 </Text>}
                             </VStack>
