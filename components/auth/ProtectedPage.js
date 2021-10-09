@@ -25,19 +25,6 @@ const ProtectedPage = (props) => {
         </Flex>
     );
 
-    const loadingPage = (
-        <Flex
-            bg={useColorModeValue('gray.50', 'inherit')}
-            minH="100vh"
-            direction={'column'}
-            alignItems={'center'}
-        >
-            <Spacer/>
-            <Spinner size={'xl'}/>
-            <Spacer/>
-        </Flex>
-    );
-
     return (
         <>
             {!isLoggedIn && isLoading && <LoadingPage/>}

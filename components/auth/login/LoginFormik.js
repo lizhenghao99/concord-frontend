@@ -17,11 +17,10 @@ import { useContext, useState } from 'react';
 import * as Yup from 'yup';
 import AuthContext from '../../../contexts/AuthContext';
 import { post } from '../../../lib/post';
-import { PasswordField } from './PasswordField';
+import { PasswordField } from '../PasswordField';
 
 const LoginFormik = (props) => {
     const [isLoginError, setIsLoginError] = useState(false);
-    const [password, setPassword] = useState(undefined);
     const router = useRouter();
     const { logIn } = useContext(AuthContext);
     const linkColor = useColorModeValue('blue.600', 'blue.200');

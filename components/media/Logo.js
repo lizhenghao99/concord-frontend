@@ -1,7 +1,7 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import * as React from 'react';
-import concord from '../../../public/images/Logo.png';
-import ImageComponent from '../../media/ImageComponent';
+import concord from '../../public/images/Logo.png';
+import ImageComponent from './ImageComponent';
 
 export const Logo = (props) => {
     return (

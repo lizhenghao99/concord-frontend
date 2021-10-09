@@ -34,6 +34,7 @@ export const PasswordField = React.forwardRef((props, ref) => {
             />
             <InputRightElement>
                 <IconButton
+                    tabindex={'-1'}
                     bg="transparent !important"
                     variant="ghost"
                     aria-label={isOpen ? 'Mask password' : 'Reveal password'}

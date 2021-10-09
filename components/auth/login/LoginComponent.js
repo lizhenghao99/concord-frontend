@@ -1,9 +1,9 @@
 import { Box, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 import * as React from 'react';
-import { Card } from './Card';
-import { Link } from './Link';
+import { Card } from '../../layouts/Card';
+import { Link } from '../../layouts/Link';
+import { Logo } from '../../media/Logo';
 import LoginFormik from './LoginFormik';
-import { Logo } from './Logo';
 
 export const LoginComponent = () => (
     <Box
@@ -29,11 +29,10 @@ export const LoginComponent = () => (
             </Heading>
             <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
                 <Text as="span">Don&apos;t have an account?</Text>
-                <Link href="#">Sign up now</Link>
+                <Link href="/auth/signup">Sign up now</Link>
             </Text>
             <Card>
                 <LoginFormik/>
-                {/*<LoginForm/>*/}
                 {/*<DividerWithText mt="6">or continue with</DividerWithText>*/}
                 {/*<SimpleGrid mt="6" columns={3} spacing="3">*/}
                 {/*    <Button color="currentColor" variant="outline">*/}
