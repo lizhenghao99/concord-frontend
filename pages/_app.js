@@ -1,3 +1,4 @@
+import HeadComponent from '../components/contents/HeadComponent';
 import { AuthContextProvider } from '../contexts/AuthContext';
 import { UserContextProvider } from '../contexts/UserContext';
 import { Chakra } from '../lib/chakra';
@@ -8,6 +9,7 @@ const MyApp = ({ Component, pageProps }) => {
         <Chakra theme={theme} cookies={pageProps.cookies}>
             <AuthContextProvider>
                 <UserContextProvider>
+                    <HeadComponent/>
                     <Component {...pageProps} />
                 </UserContextProvider>
             </AuthContextProvider>
