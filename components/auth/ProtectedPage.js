@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Spacer, Spinner, useColorModeValue } from '@chakra-
 import { useContext } from 'react';
 import AuthContext from '../../contexts/AuthContext';
 import { useUser } from '../../lib/hooks';
-import LoadingPage from '../layouts/LoadingPage';
+import LoadingPage from '../contents/LoadingPage';
 
 const ProtectedPage = (props) => {
     const { isLoggedIn } = useContext(AuthContext);

@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Spacer, Spinner, useColorModeValue } from '@chakra-ui/react';
 import { LoginComponent } from '../../components/auth/login/LoginComponent';
-import LoadingPage from '../../components/layouts/LoadingPage';
+import LoadingPage from '../../components/contents/LoadingPage';
 import { useUser } from '../../lib/hooks';
 
 const Login = (props) => {

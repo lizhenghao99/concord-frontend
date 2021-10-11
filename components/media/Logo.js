@@ -4,12 +4,13 @@ import concord from '../../public/images/Logo.png';
 import ImageComponent from './ImageComponent';
 
 export const Logo = (props) => {
+    const { color, boxSize, fontSize, ...rest } = props;
     return (
-        <Box {...props}>
+        <Box {...rest}>
             <Flex alignItems={'center'} justifyContent={'center'}>
-                <ImageComponent src={concord} boxSize="3rem"/>
+                <ImageComponent src={concord} boxSize={boxSize ? boxSize : '3rem'}/>
                 <Box minW={'0.5rem'}/>
-                <Heading color={'blue.300'}>Concord</Heading>
+                <Heading fontSize={fontSize ? fontSize : '5xl'} color={color ? color : 'blue.300'}>Concord</Heading>
             </Flex>
         </Box>
     );
