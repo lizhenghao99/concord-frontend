@@ -8,11 +8,11 @@ const Home = () => {
 
     return (
         <AppPage>
-            <VStack mt={'10rem'} alignItems={'center'} spacing={'5rem'} my={'auto'}>
-                <Heading size={'xl'}>
+            <VStack mt={'10rem'} alignItems={'center'} spacing={{ base: '2rem', lg: '5rem' }} my={'auto'}>
+                <Heading size={'xl'} textAlign={'center'}>
                     Concord helps you and your friends to decide.
                 </Heading>
-                <TwoColumnGrid maxW={'80%'} spacingX={'5rem'}>
+                <TwoColumnGrid maxW={'80%'} spacingX={'5rem'} spacingY={'2rem'}>
                     <Card>
                         <Heading size={'md'}>
                             If your friends are with you and ready to match
@@ -28,7 +28,7 @@ const Home = () => {
                             If your friends are away and would respond later
                         </Heading>
                         <LinkButton
-                            href={'/match/local'}
+                            href={'/match/remote'}
                             text={'Start a remote match'}
                             mt={'3rem'}
                         />

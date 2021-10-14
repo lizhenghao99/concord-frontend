@@ -1,0 +1,17 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.my-scroll-box::-webkit-scrollbar {
+    display: none;
+}
+
+.my-infinite-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.my-scroll-box::-webkit-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.my-infinite-scroll::-webkit-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+}

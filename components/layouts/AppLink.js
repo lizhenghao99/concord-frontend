@@ -2,7 +2,7 @@ import { chakra, useColorModeValue } from '@chakra-ui/system';
 import NextLink from 'next/link';
 import * as React from 'react';
 
-export const Link = (props) => (
+export const AppLink = (props) => (
     <NextLink href={props.href} passHref>
         <chakra.a
             marginStart="1"

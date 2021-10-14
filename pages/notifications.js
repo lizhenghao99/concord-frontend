@@ -1,5 +1,5 @@
+import PageHeading from '../components/contents/PageHeading';
 import AppPage from '../components/layouts/AppPage';
-import PageHeading from '../components/layouts/PageHeading';
 
 const Notifications = (props) => {
     return (

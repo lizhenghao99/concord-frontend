@@ -50,6 +50,7 @@ const SidebarProfileMenu = (props) => {
                     _focus={{ outline: 'None' }}
                     w={width}
                     minH={height}
+                    {...props}
                 >
                     <Flex direction={'row'} alignItems={'center'}>
                         <Icon as={CgProfile} boxSize={picSize} mr={picRightMargin}/>

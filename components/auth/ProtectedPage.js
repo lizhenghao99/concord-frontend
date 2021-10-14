@@ -16,9 +16,9 @@ const ProtectedPage = (props) => {
             alignItems={'center'}
         >
             <Spacer/>
-            <Heading>You are not logged in.</Heading>
+            <Heading textAlign={'center'}>You are not logged in.</Heading>
             <Box minH={'1rem'}/>
-            <Heading>Redirecting to login page...</Heading>
+            <Heading textAlign={'center'}>Redirecting to login page...</Heading>
             <Box minH={'3rem'}/>
             <Spinner size={'xl'}/>
             <Spacer/>

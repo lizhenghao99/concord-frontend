@@ -7,7 +7,7 @@ const UserContext = createContext({
 });
 
 const UserContextProvider = (props) => {
-    const [user, setUser] = useState(undefined);
+    const [user, setUser] = useState(null);
 
     const context = {
         user,

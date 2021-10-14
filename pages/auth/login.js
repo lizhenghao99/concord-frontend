@@ -13,9 +13,9 @@ const Login = (props) => {
             alignItems={'center'}
         >
             <Spacer/>
-            <Heading>You are already logged in.</Heading>
+            <Heading textAlign={'center'}>You are already logged in.</Heading>
             <Box minH={'1rem'}/>
-            <Heading>Redirecting to home page...</Heading>
+            <Heading textAlign={'center'}>Redirecting to home page...</Heading>
             <Box minH={'3rem'}/>
             <Spinner size={'xl'}/>
             <Spacer/>

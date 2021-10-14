@@ -2,6 +2,7 @@ import HeadComponent from '../components/contents/HeadComponent';
 import { AuthContextProvider } from '../contexts/AuthContext';
 import { UserContextProvider } from '../contexts/UserContext';
 import { Chakra } from '../lib/chakra';
+import '../styles/styles.css';
 import theme from '../themes/theme';
 
 const MyApp = ({ Component, pageProps }) => {

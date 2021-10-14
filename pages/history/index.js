@@ -1,33 +1,67 @@
-import { Text } from '@chakra-ui/react';
-import { useContext } from 'react';
-import LoadingPage from '../../components/contents/LoadingPage';
+import { Box, Center, Spinner, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import AppLoadingPage from '../../components/contents/AppLoadingPage';
+import HistoryCard from '../../components/contents/history/HistoryCard';
+import PageHeading from '../../components/contents/PageHeading';
 import AppPage from '../../components/layouts/AppPage';
-import { Card } from '../../components/layouts/Card';
-import PageHeading from '../../components/layouts/PageHeading';
-import UserContext from '../../contexts/UserContext';
-import { useGet } from '../../lib/hooks';
+import { get } from '../../lib/get';
 
 const History = (props) => {
-    const { user } = useContext(UserContext);
-    const { data, isLoading } = useGet('/matches');
+    const size = 10;
+    const [page, setPage] = useState(1);
+    const [items, setItems] = useState(null);
+    const [total, setTotal] = useState(0);
 
-    if (isLoading) {
+    useEffect(() => {
+        const getData = async () => {
+            if (!items) {
+                const data = await get('/matches/page/', { pageNo: 1, pageSize: size });
+                setItems(data.matches);
+                setTotal(data.total);
+                console.log(data.total);
+            }
+        };
+        getData();
+    }, [items]);
+
+
+    const loadPage = async () => {
+        const pageData = await get('/matches/page/', { pageNo: page + 1, pageSize: size });
+        setItems(prevState => prevState.concat(pageData.matches));
+        setPage(prevState => prevState + 1);
+    };
+
+    if (!items) {
         return (
             <AppPage>
-                <LoadingPage/>
+                <AppLoadingPage/>
             </AppPage>
         );
     }
     return (
         <AppPage>
-            <PageHeading>Recent Matches</PageHeading>
-            {data.map((value, index) => (
-                <Card key={index} maxW={'80%'}>
-                    <Text>
-                        {JSON.stringify(value)}
-                    </Text>
-                </Card>
-            ))}
+            <PageHeading mb={{ base: '1rem', lg: '5rem' }}>Recent Matches</PageHeading>
+            <Box
+                minW={{ base: '80%', lg: '50%' }}
+                className={'my-scroll-box'}
+                overflowY={'scroll'}
+                id={'matchHistoryScrollBox'}
+            >
+                <InfiniteScroll
+                    className={'my-infinite-scroll'}
+                    next={loadPage}
+                    hasMore={items.length < total}
+                    loader={<Center><Spinner color={'blue.500'}/></Center>}
+                    dataLength={items.length}
+                    scrollableTarget={'matchHistoryScrollBox'}
+                    endMessage={<Center><Text>You have reached the end</Text></Center>}
+                >
+                    {items.map((value, index) => (
+                        <HistoryCard key={index} minW={'80%'} match={value}/>
+                    ))}
+                </InfiniteScroll>
+            </Box>
         </AppPage>
     );
 };

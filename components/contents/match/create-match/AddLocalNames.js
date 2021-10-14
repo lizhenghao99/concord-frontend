@@ -17,7 +17,7 @@ import { useState } from 'react';
 import { sleep } from '../../../../lib/sleep';
 
 const AddLocalNames = (props) => {
-    const { submitHandler } = props;
+    const { submitHandler, nickname } = props;
     const columns = useBreakpointValue({ base: 1, lg: 3 });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitError, setIsSubmitError] = useState(false);
@@ -26,7 +26,9 @@ const AddLocalNames = (props) => {
         const errors = {};
         values.localNames.forEach((value, index) => {
             if (values.localNames.slice(0, index).includes(value) ||
-                values.localNames.slice(index + 1).includes(value)) {
+                values.localNames.slice(index + 1).includes(value) ||
+                value === nickname
+            ) {
                 if (!errors.localNames) {
                     errors.localNames = {};
                 }
@@ -37,6 +39,12 @@ const AddLocalNames = (props) => {
                     errors.localNames = {};
                 }
                 errors.localNames[index] = 'Required';
+            }
+            if (value.length > 16) {
+                if (!errors.localNames) {
+                    errors.localNames = {};
+                }
+                errors.localNames[index] = 'Must be less than 16 characters';
             }
         });
         return errors;
@@ -100,7 +108,7 @@ const AddLocalNames = (props) => {
                                                                     isRequired
                                                                 />
                                                                 <CloseButton
-                                                                    tabindex={'-1'}
+                                                                    tabIndex={'-1'}
                                                                     onClick={() => remove(index)}
                                                                 />
                                                             </HStack>

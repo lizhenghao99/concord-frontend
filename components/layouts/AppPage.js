@@ -1,6 +1,7 @@
 import { Box, Flex, GridItem, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
 import ProtectedPage from '../auth/ProtectedPage';
 import Sidebar from '../contents/sidebar/Sidebar';
+import SideDrawer from '../contents/sidebar/SideDrawer';
 import MultiColumnGrid from './MultiColumnGrid';
 
 const AppPage = (props) => {
@@ -38,6 +39,7 @@ const AppPage = (props) => {
                         boxShadow={'xl'}
                     >
                         {props.children}
+                        <Box minH={'2rem'}/>
                     </Flex>
                 </Box>
             </GridItem>
@@ -54,7 +56,9 @@ const AppPage = (props) => {
             borderLeftRadius={'2xl'}
             overflow={'auto'}
         >
+            <SideDrawer darkBg={darkBg}/>
             {props.children}
+            <Box minH={'2rem'}/>
         </Flex>
     );
 

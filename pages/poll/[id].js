@@ -1,6 +1,7 @@
+import { router } from 'next/client';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
-import LoadingPage from '../../components/contents/LoadingPage';
+import AppLoadingPage from '../../components/contents/AppLoadingPage';
 import CreatePoll from '../../components/contents/poll/CreatePoll';
 import AppPage from '../../components/layouts/AppPage';
 import { get } from '../../lib/get';
@@ -28,7 +29,9 @@ const Poll = (props) => {
             let itemsData;
             switch (match.poll.type) {
                 case 'movie':
+                case 'series':
                     itemsData = await get(`/videos`, {
+                        type: match.poll.type,
                         genrelist: match.poll.extras,
                         start_year: 2000,
                         limit: 10,
@@ -62,13 +65,15 @@ const Poll = (props) => {
         };
         await patch('/polls', pollBody);
         await post('polls/respond', respondBody);
-        setCreateButtonLoading(false);
+        if (match.isLocal) {
+            router.push(`/match/local/in-progress/${match.id}`);
+        }
     };
 
     if (!match || !items || items.length === 0) {
         return (
             <AppPage>
-                <LoadingPage/>
+                <AppLoadingPage/>
             </AppPage>
         );
     }
