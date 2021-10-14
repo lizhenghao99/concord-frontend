@@ -1,4 +1,3 @@
-import { router } from 'next/client';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import AppLoadingPage from '../../components/contents/AppLoadingPage';
@@ -16,6 +15,7 @@ const Poll = (props) => {
     const [respond, setRespond] = useState([]);
     const [moreButtonLoading, setMoreButtonLoading] = useState(false);
     const [createButtonLoading, setCreateButtonLoading] = useState(false);
+    const router = useRouter();
 
     const pushRespondEntry = (entry) => {
         setRespond(prevState => {
