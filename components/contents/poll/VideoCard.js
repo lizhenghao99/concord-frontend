@@ -40,7 +40,12 @@ const VideoCard = (props) => {
                             spacing={'2rem'}
                             maxW={maxWidth}
                         >
-                            <Heading maxW={maxWidth} size={titleSize} noOfLines={3}>
+                            <Heading
+                                lineHeight={{ base: '2rem', md: '3rem' }}
+                                maxW={maxWidth}
+                                size={titleSize}
+                                noOfLines={3}
+                            >
                                 {decode(video.title)}
                             </Heading>
                             <Heading fontSize={'xl'}>
