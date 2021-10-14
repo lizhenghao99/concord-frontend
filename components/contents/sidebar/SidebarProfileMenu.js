@@ -13,6 +13,7 @@ import {
     Text,
     useBreakpointValue,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import { useContext } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import UserContext from '../../../contexts/UserContext';
@@ -64,7 +65,9 @@ const SidebarProfileMenu = (props) => {
                     </Flex>
                 </MenuButton>
                 <MenuList bg={'blue.800'} borderColor={'blue.800'} minW={width}>
-                    <MenuItem>Profile settings</MenuItem>
+                    <NextLink href={'/user'}>
+                        <MenuItem>Profile settings</MenuItem>
+                    </NextLink>
                     <LogoutMenuItem/>
                 </MenuList>
             </Menu>

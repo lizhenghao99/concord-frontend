@@ -1,10 +1,10 @@
-import { Heading } from '@chakra-ui/react';
 import AppPage from '../components/layouts/AppPage';
+import PageHeading from '../components/layouts/PageHeading';
 
 const Friends = (props) => {
     return (
         <AppPage>
-            <Heading>Friends</Heading>
+            <PageHeading>Friends List</PageHeading>
         </AppPage>
     );
 };

@@ -1,18 +1,39 @@
 import { Heading, VStack } from '@chakra-ui/react';
-import { useContext } from 'react';
+import LinkButton from '../components/input/LinkButton';
 import AppPage from '../components/layouts/AppPage';
-import UserContext from '../contexts/UserContext';
-import { useGet } from '../lib/hooks';
+import { Card } from '../components/layouts/Card';
+import TwoColumnGrid from '../components/layouts/TwoColumnGrid';
 
 const Home = () => {
-    const { user } = useContext(UserContext);
-    const { data } = useGet('/');
 
     return (
         <AppPage>
-            <VStack mt={'10rem'} alignItems={'center'} spacing={'5rem'}>
-                {data && <Heading textAlign={'center'} size={'lg'}>{data.content}</Heading>}
-                {user && <Heading textAlign={'center'}> You are {user.username}</Heading>}
+            <VStack mt={'10rem'} alignItems={'center'} spacing={'5rem'} my={'auto'}>
+                <Heading size={'xl'}>
+                    Concord helps you and your friends to decide.
+                </Heading>
+                <TwoColumnGrid maxW={'80%'} spacingX={'5rem'}>
+                    <Card>
+                        <Heading size={'md'}>
+                            If your friends are with you and ready to match
+                        </Heading>
+                        <LinkButton
+                            href={'/match/local'}
+                            text={'Start a local match'}
+                            mt={'3rem'}
+                        />
+                    </Card>
+                    <Card>
+                        <Heading size={'md'}>
+                            If your friends are away and would respond later
+                        </Heading>
+                        <LinkButton
+                            href={'/match/local'}
+                            text={'Start a remote match'}
+                            mt={'3rem'}
+                        />
+                    </Card>
+                </TwoColumnGrid>
             </VStack>
         </AppPage>
     );

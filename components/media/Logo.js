@@ -8,7 +8,7 @@ export const Logo = (props) => {
     return (
         <Box {...rest}>
             <Flex alignItems={'center'} justifyContent={'center'}>
-                <ImageComponent src={concord} boxSize={boxSize ? boxSize : '3rem'}/>
+                <ImageComponent src={concord} boxSize={boxSize ? boxSize : '3rem'} placeholder={'empty'}/>
                 <Box minW={'0.5rem'}/>
                 <Heading fontSize={fontSize ? fontSize : '5xl'} color={color ? color : 'blue.300'}>Concord</Heading>
             </Flex>

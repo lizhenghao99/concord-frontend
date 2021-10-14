@@ -25,7 +25,7 @@ export const LoginComponent = () => (
                 }}
             />
             <Heading textAlign="center" size="xl" fontWeight="extrabold">
-                Sign in to your account
+                Make decisions with ease
             </Heading>
             <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
                 <Text as="span">Don&apos;t have an account?</Text>

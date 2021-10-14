@@ -1,7 +1,6 @@
 import { Box, Flex, GridItem, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import ProtectedPage from '../auth/ProtectedPage';
-import Sidebar from '../contents/Sidebar/Sidebar';
+import Sidebar from '../contents/sidebar/Sidebar';
 import MultiColumnGrid from './MultiColumnGrid';
 
 const AppPage = (props) => {
@@ -9,10 +8,6 @@ const AppPage = (props) => {
     const columns = useBreakpointValue({ base: 5, xl: 6, '2xl': 7 });
     const lightBg = useColorModeValue('gray.50', 'gray.800');
     const darkBg = useColorModeValue('blue.500', 'blue.900');
-
-    useEffect(() => {
-        console.log(mobile);
-    }, [mobile]);
 
     const desktopLayout = (
         <MultiColumnGrid
@@ -35,9 +30,12 @@ const AppPage = (props) => {
                     <Flex
                         bg={lightBg}
                         minH="100vh"
+                        maxH={'100vh'}
                         direction={'column'}
                         alignItems={'center'}
                         borderLeftRadius={'2xl'}
+                        overflow={'auto'}
+                        boxShadow={'xl'}
                     >
                         {props.children}
                     </Flex>
@@ -47,9 +45,17 @@ const AppPage = (props) => {
     );
 
     const mobileLayout = (
-        <Box>
+        <Flex
+            bg={lightBg}
+            minH="100vh"
+            maxH={'100vh'}
+            direction={'column'}
+            alignItems={'center'}
+            borderLeftRadius={'2xl'}
+            overflow={'auto'}
+        >
             {props.children}
-        </Box>
+        </Flex>
     );
 
     return (

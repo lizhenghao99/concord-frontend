@@ -15,7 +15,7 @@ const SignupFormik = (props) => {
 
     useEffect(() => {
         if (isSignupSuccess) {
-            setTimeout(() => router.replace('/auth/login'), 2000);
+            setTimeout(() => router.replace('/auth/login'), 1000);
         }
     }, [isSignupSuccess]);
 
@@ -123,9 +123,8 @@ const SignupFormik = (props) => {
                                     Failed to sign up
                                 </Text>}
                                 {!props.isSubmitting && isSignupSuccess &&
-                                <Text color={'green.500'}>
-                                    Successfully signed up.
-                                    Redirecting to login...
+                                <Text color={'green.500'} align={'center'}>
+                                    Successfully signed up. Redirecting to login...
                                 </Text>}
                             </VStack>
                         </Form>
