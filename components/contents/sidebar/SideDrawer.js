@@ -5,7 +5,6 @@ import {
     DrawerBody,
     DrawerCloseButton,
     DrawerContent,
-    DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     Flex,
@@ -71,22 +70,26 @@ const SideDrawer = (props) => {
                             <NextLink href={'/user'}>
                                 <SidebarProfileMenu onClick={onClose}/>
                             </NextLink>
-                            <Box minH={'0.5rem'}/>
+                            <Box minH={'1rem'}/>
                             {buttons.map(({ href, text }, index) => (
                                 <SideDrawerButton key={index} onClick={onClose}>
                                     <SidebarButton href={href} text={text}/>
                                 </SideDrawerButton>
                             ))}
+                            <Box minH={'1rem'}/>
+                            <SideDrawerButton onClick={onClose}>
+                                <ColorModeButton/>
+                            </SideDrawerButton>
+                            <SideDrawerButton onClick={onClose}>
+                                <LogoutButton
+                                    justifyContent={'flex-start'}
+                                    variant={'ghost'}
+                                    color={'white'}
+                                    w={'11rem'}
+                                />
+                            </SideDrawerButton>
                         </VStack>
                     </DrawerBody>
-                    <DrawerFooter>
-                        <SideDrawerButton onClick={onClose}>
-                            <ColorModeButton/>
-                        </SideDrawerButton>
-                        <SideDrawerButton onClick={onClose}>
-                            <LogoutButton variant={'ghost'} color={'white'}/>
-                        </SideDrawerButton>
-                    </DrawerFooter>
                 </DrawerContent>
             </Drawer>
         </>
