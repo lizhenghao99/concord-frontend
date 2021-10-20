@@ -61,6 +61,14 @@ const NotificationModal = (props) => {
             onClose();
         };
 
+        const onRespond = async () => {
+            await post('/notifications/state', {
+                notificationId: value.id,
+                state: 2,
+            });
+            setNotificationState(2);
+        };
+
         const notificationType = {
             'friend-request': {
                 acceptText: 'Accept Request',
@@ -161,6 +169,7 @@ const NotificationModal = (props) => {
                     isOpen={isAlertOpen}
                     setIsOpen={setIsAlertOpen}
                     closeModal={onCloseHandler}
+                    onRespond={onRespond}
                     value={value}
                 />
             </>

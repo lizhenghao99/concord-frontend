@@ -14,7 +14,7 @@ import { post } from '../../../lib/post';
 import { sleep } from '../../../lib/sleep';
 
 const OptOutAlert = (props) => {
-    const { isOpen, setIsOpen, closeModal, value } = props;
+    const { isOpen, setIsOpen, closeModal, value, onRespond } = props;
     const onClose = () => setIsOpen(false);
     const cancelRef = useRef();
     const router = useRouter();
@@ -32,6 +32,7 @@ const OptOutAlert = (props) => {
             matchId: value.extras,
         });
         await sleep(500);
+        await onRespond();
         setIsLoading(false);
         router.push(`/match/remote/in-progress/${value.extras}`);
     };
