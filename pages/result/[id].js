@@ -41,7 +41,7 @@ const Result = (props) => {
             <VStack mt={{ base: '2rem', lg: '5rem' }} spacing={'2rem'}>
                 <VideoCard video={videos[0]} isMobile={isMobile}/>
                 <LinkButton
-                    href={user.id === match.host.id ? '/history/hosted' : 'history/participated'}
+                    href={user.id === match.host.id ? '/history/hosted' : '/history/participated'}
                     text={'back'}
                     size={'lg'}
                 />

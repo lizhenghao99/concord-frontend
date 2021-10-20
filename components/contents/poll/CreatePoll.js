@@ -38,7 +38,7 @@ const CreatePoll = (props) => {
                     onClick={onMore}
                     isLoading={moreButtonLoading}
                 >
-                    More selections
+                    More Selections
                 </Button>
                 <Button
                     colorScheme={'blue'}
@@ -47,7 +47,7 @@ const CreatePoll = (props) => {
                     onClick={onCreate}
                     isLoading={createButtonLoading}
                 >
-                    Publish poll
+                    Publish Poll
                 </Button>
             </VStack>
         </>

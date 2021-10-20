@@ -67,6 +67,8 @@ const Poll = (props) => {
         await post('polls/respond', respondBody);
         if (match.isLocal) {
             router.push(`/match/local/in-progress/${match.id}`);
+        } else {
+            router.push(`/match/remote/in-progress/${match.id}`);
         }
     };
 

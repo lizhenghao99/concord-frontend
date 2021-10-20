@@ -9,11 +9,13 @@ import PageHeading from '../PageHeading';
 import PollSelection from './PollSelection';
 
 const RespondPoll = (props) => {
-    const { match, name } = props;
+    const { match, name, user } = props;
     const { data: videos } = useGet(`/videos/${match.poll.items}`);
     const [respond, setRespond] = useState([]);
     const [index, setIndex] = useState(0);
-    const respondedNames = match.poll.responses.map(value => value.localName);
+    const respondedNames = match.isLocal ?
+        match.poll.responses.map(value => value.localName)
+        : match.poll.responses.map(value => value.user.id);
     const router = useRouter();
 
     useEffect(() => {
@@ -21,11 +23,15 @@ const RespondPoll = (props) => {
             const respondBody = {
                 pollId: match.poll.id,
                 entries: respond,
-                localName: name,
+                localName: match.isLocal ? name : '',
             };
             await post(`/polls/respond`, respondBody);
             await sleep(1000);
-            router.push(`/match/local/in-progress/${match.id}`);
+            if (match.isLocal) {
+                router.push(`/match/local/in-progress/${match.id}`);
+            } else {
+                router.push(`/match/remote/in-progress/${match.id}`);
+            }
         };
         if (videos && index === videos.length) {
             submitResponse();
@@ -39,10 +45,14 @@ const RespondPoll = (props) => {
         });
     };
 
-    if (respondedNames.includes(name)) {
+    if ((match.isLocal && respondedNames.includes(name)) ||
+        (!match.isLocal && respondedNames.includes(user.id))
+    ) {
         setTimeout(() => {
             if (match.isLocal) {
                 router.push(`/match/local/in-progress/${match.id}`);
+            } else {
+                router.push(`/match/remote/in-progress/${match.id}`);
             }
         }, 1000);
         return (
@@ -60,7 +70,9 @@ const RespondPoll = (props) => {
         );
     }
 
-    if (match.isLocal && !match.localParticipants.split(',').includes(name)) {
+    if ((match.isLocal && !match.localParticipants.split(',').includes(name)) ||
+        (!match.isLocal && !match.remoteParticipants.map(value => value.id).includes(user.id))
+    ) {
         return (
             <>
                 <PageHeading>
@@ -82,7 +94,7 @@ const RespondPoll = (props) => {
             index={index}
             setIndex={setIndex}
             onPush={pushRespondEntry}
-            name={name}
+            name={match.isLocal ? name : user.userInfo.nickname}
         />
     );
 

@@ -1,8 +1,8 @@
-import { Heading, Tag, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
+import { Heading, HStack, Tag, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
 import { Card } from '../../layouts/Card';
 
 const NotificationCard = (props) => {
-    const { value, state, ...rest } = props;
+    const { value, state, requiresResponse, ...rest } = props;
     const headingFontSize = useBreakpointValue({ base: 'lg', lg: 'xl' });
     const textFontSize = useBreakpointValue({ base: 'md', lg: 'lg' });
     const timeFontSize = useBreakpointValue({ base: 'md', lg: 'lg' });
@@ -26,9 +26,15 @@ const NotificationCard = (props) => {
             transition={'all 0.2s cubic-bezier(.08,.52,.52,1)'}
             {...rest}
         >
-            <Heading fontSize={headingFontSize}>
-                {value.title} <Tag variant={variant} colorScheme={tagColor}>{tagText}</Tag>
-            </Heading>
+            <HStack>
+                <Heading fontSize={headingFontSize}>
+                    {value.title}
+                </Heading>
+                <Tag variant={variant} colorScheme={tagColor}>{tagText}</Tag>
+                {requiresResponse && state !== 2 &&
+                <Tag variant={variant} colorScheme={'red'}>Waiting for Response</Tag>
+                }
+            </HStack>
             <Text fontSize={textFontSize}>{value.message}</Text>
         </Card>
     );

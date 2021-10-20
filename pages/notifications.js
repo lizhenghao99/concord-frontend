@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
 import AppLoadingPage from '../components/contents/AppLoadingPage';
 import NotificationModal from '../components/contents/notification/NotificationModal';
 import PageHeading from '../components/contents/PageHeading';
 import AppPage from '../components/layouts/AppPage';
 import AppScrollBox from '../components/layouts/AppScrollBox';
+import UserContext from '../contexts/UserContext';
 import { get } from '../lib/get';
 
 const Notifications = (props) => {
@@ -11,6 +13,8 @@ const Notifications = (props) => {
     const [page, setPage] = useState(1);
     const [items, setItems] = useState(null);
     const [total, setTotal] = useState(0);
+    const { user } = useContext(UserContext);
+    const router = useRouter();
 
     useEffect(() => {
         const getData = async () => {
@@ -30,7 +34,7 @@ const Notifications = (props) => {
         setPage(prevState => prevState + 1);
     };
 
-    if (!items) {
+    if (!items || !user) {
         return (
             <AppPage>
                 <AppLoadingPage/>
@@ -51,6 +55,8 @@ const Notifications = (props) => {
                         key={index}
                         minW={'80%'}
                         value={value}
+                        user={user}
+                        router={router}
                     />
                 ))}
             </AppScrollBox>
