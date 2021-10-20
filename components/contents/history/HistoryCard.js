@@ -14,12 +14,17 @@ const HistoryCard = (props) => {
     const greenBg = useColorModeValue('green.100', 'green.900');
     const redBg = useColorModeValue('red.100', 'red.900');
     const whiteBg = useColorModeValue('white', 'gray.700');
+    const greenHover = useColorModeValue('green.200', 'green.800');
+    const redHover = useColorModeValue('red.200', 'red.800');
+    const whiteHover = useColorModeValue('gray.100', 'gray.600');
     return (
         <NextLink href={href}>
             <Card
                 cursor={'pointer'}
                 my={'1rem'}
                 bg={match.isCompleted ? greenBg : match.poll.items ? whiteBg : redBg}
+                _hover={{ bg: match.isCompleted ? greenHover : match.poll.items ? whiteHover : redHover }}
+                transition={'all 0.2s cubic-bezier(.08,.52,.52,1)'}
                 {...props}
             >
                 <VStack align={'left'} minW={{ base: '15rem', lg: '20rem' }}>

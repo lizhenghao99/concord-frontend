@@ -1,6 +1,7 @@
 import { Box, Flex, Spacer, useBreakpointValue, VStack } from '@chakra-ui/react';
 import { Logo } from '../../media/Logo';
 import ColorModeButton from './ColorModeButton';
+import NotificationButton from './NotificationButton';
 import SidebarButton from './SidebarButton';
 import SidebarProfileMenu from './SidebarProfileMenu';
 
@@ -15,9 +16,10 @@ const Sidebar = (props) => {
                 <SidebarProfileMenu/>
                 <Box minH={'0.5rem'}/>
                 <SidebarButton href={'/'} text={'Start Matching'}/>
-                <SidebarButton href={'/history'} text={'Matching History'}/>
-                <SidebarButton href={'/notifications'} text={'Notifications'}/>
+                <SidebarButton href={'/history/hosted'} text={'Hosted Matches'}/>
+                <SidebarButton href={'/history/participated'} text={'Participated Matches'}/>
                 <SidebarButton href={'/friends'} text={'Friends'}/>
+                <NotificationButton/>
             </VStack>
             <Spacer/>
             <ColorModeButton/>

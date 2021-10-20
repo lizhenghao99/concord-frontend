@@ -1,13 +1,12 @@
-import { Box, Center, Spinner, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import AppLoadingPage from '../../components/contents/AppLoadingPage';
 import HistoryCard from '../../components/contents/history/HistoryCard';
 import PageHeading from '../../components/contents/PageHeading';
 import AppPage from '../../components/layouts/AppPage';
+import AppScrollBox from '../../components/layouts/AppScrollBox';
 import { get } from '../../lib/get';
 
-const History = (props) => {
+const Hosted = (props) => {
     const size = 10;
     const [page, setPage] = useState(1);
     const [items, setItems] = useState(null);
@@ -19,7 +18,6 @@ const History = (props) => {
                 const data = await get('/matches/page/', { pageNo: 1, pageSize: size });
                 setItems(data.matches);
                 setTotal(data.total);
-                console.log(data.total);
             }
         };
         getData();
@@ -41,29 +39,19 @@ const History = (props) => {
     }
     return (
         <AppPage>
-            <PageHeading mb={{ base: '1rem', lg: '5rem' }}>Recent Matches</PageHeading>
-            <Box
-                minW={{ base: '80%', lg: '50%' }}
-                className={'my-scroll-box'}
-                overflowY={'scroll'}
-                id={'matchHistoryScrollBox'}
+            <PageHeading mb={{ base: '1rem', lg: '5rem' }}>Hosted Matches</PageHeading>
+            <AppScrollBox
+                id={'hostedMatchesHistory'}
+                loadPage={loadPage}
+                items={items}
+                total={total}
             >
-                <InfiniteScroll
-                    className={'my-infinite-scroll'}
-                    next={loadPage}
-                    hasMore={items.length < total}
-                    loader={<Center><Spinner color={'blue.500'}/></Center>}
-                    dataLength={items.length}
-                    scrollableTarget={'matchHistoryScrollBox'}
-                    endMessage={<Center><Text>You have reached the end</Text></Center>}
-                >
-                    {items.map((value, index) => (
-                        <HistoryCard key={index} minW={'80%'} match={value}/>
-                    ))}
-                </InfiniteScroll>
-            </Box>
+                {items.map((value, index) => (
+                    <HistoryCard key={index} minW={'80%'} match={value}/>
+                ))}
+            </AppScrollBox>
         </AppPage>
     );
 };
 
-export default History;
+export default Hosted;

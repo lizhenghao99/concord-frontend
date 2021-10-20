@@ -18,6 +18,7 @@ import NextLink from 'next/link';
 import { useRef } from 'react';
 import LogoutButton from '../../auth/logout/LogoutButton';
 import ColorModeButton from './ColorModeButton';
+import NotificationButton from './NotificationButton';
 import SidebarButton from './SidebarButton';
 import SidebarProfileMenu from './SidebarProfileMenu';
 import SideDrawerButton from './SideDrawerButton';
@@ -32,12 +33,14 @@ const SideDrawer = (props) => {
             text: 'Start Matching',
         },
         {
-            href: '/history',
-            text: 'Matching History',
-        }, {
-            href: '/notifications',
-            text: 'Notifications',
-        }, {
+            href: '/history/hosted',
+            text: 'Hosted Matches',
+        },
+        {
+            href: '/history/participated',
+            text: 'Participated Matches',
+        },
+        {
             href: '/friends',
             text: 'Friends',
         },
@@ -76,6 +79,9 @@ const SideDrawer = (props) => {
                                     <SidebarButton href={href} text={text}/>
                                 </SideDrawerButton>
                             ))}
+                            <SideDrawerButton onClick={onClose}>
+                                <NotificationButton/>
+                            </SideDrawerButton>
                             <Box minH={'1rem'}/>
                             <SideDrawerButton onClick={onClose}>
                                 <ColorModeButton/>
