@@ -5,6 +5,7 @@ import SideDrawer from '../contents/sidebar/SideDrawer';
 import MultiColumnGrid from './MultiColumnGrid';
 
 const AppPage = (props) => {
+    const { redirect } = props;
     const mobile = useBreakpointValue({ base: true, lg: false });
     const columns = useBreakpointValue({ base: 5, xl: 6, '2xl': 7 });
     const lightBg = useColorModeValue('gray.50', 'gray.800');
@@ -63,7 +64,7 @@ const AppPage = (props) => {
     );
 
     return (
-        <ProtectedPage>
+        <ProtectedPage redirect={redirect}>
             {!mobile && desktopLayout}
             {mobile && mobileLayout}
         </ProtectedPage>

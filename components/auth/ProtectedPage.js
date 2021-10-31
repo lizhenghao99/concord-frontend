@@ -5,8 +5,9 @@ import { useUser } from '../../lib/hooks';
 import LoadingPage from '../contents/LoadingPage';
 
 const ProtectedPage = (props) => {
+    const { redirect } = props;
     const { isLoggedIn } = useContext(AuthContext);
-    const { user, isLoading, isError } = useUser('/auth/login');
+    const { user, isLoading, isError } = useUser(redirect ? redirect : '/auth/login');
 
     const notLoggedInPage = (
         <Flex

@@ -19,9 +19,12 @@ const Notifications = (props) => {
     useEffect(() => {
         const getData = async () => {
             if (!items) {
-                const data = await get('/notifications/received/page', { pageNo: 1, pageSize: size });
-                setItems(data.notifications);
-                setTotal(data.total);
+                try {
+                    const data = await get('/notifications/received/page', { pageNo: 1, pageSize: size });
+                    setItems(data.notifications);
+                    setTotal(data.total);
+                } catch (error) {
+                }
             }
         };
         getData();

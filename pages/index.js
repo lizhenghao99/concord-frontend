@@ -7,7 +7,7 @@ import TwoColumnGrid from '../components/layouts/TwoColumnGrid';
 const Home = () => {
 
     return (
-        <AppPage>
+        <AppPage redirect={'/welcome'}>
             <VStack mt={'10rem'} alignItems={'center'} spacing={{ base: '2rem', lg: '5rem' }} my={'auto'}>
                 <Heading size={'xl'} textAlign={'center'}>
                     Concord helps you and your friends to decide.
