@@ -46,8 +46,8 @@ const Hosted = (props) => {
                 items={items}
                 total={total}
             >
-                {items.map((value, index) => (
-                    <HistoryCard key={index} minW={'80%'} match={value}/>
+                {items.map((value) => (
+                    <HistoryCard key={value.id} minW={'80%'} match={value}/>
                 ))}
             </AppScrollBox>
         </AppPage>

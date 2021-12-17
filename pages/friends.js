@@ -48,8 +48,8 @@ const Friends = (props) => {
                 items={items}
                 total={total}
             >
-                {items.map((value, index) => (
-                    <FriendModal key={index} minW={'80%'} value={value}/>
+                {items.map((value) => (
+                    <FriendModal key={value.id} minW={'80%'} value={value}/>
                 ))}
             </AppScrollBox>
         </AppPage>

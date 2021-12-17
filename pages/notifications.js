@@ -44,6 +44,7 @@ const Notifications = (props) => {
             </AppPage>
         );
     }
+
     return (
         <AppPage>
             <PageHeading mb={{ base: '1rem', lg: '5rem' }}>Notifications</PageHeading>
@@ -53,9 +54,9 @@ const Notifications = (props) => {
                 items={items}
                 total={total}
             >
-                {items.map((value, index) => (
+                {items.map((value) => (
                     <NotificationModal
-                        key={index}
+                        key={value.id}
                         minW={'80%'}
                         value={value}
                         user={user}
